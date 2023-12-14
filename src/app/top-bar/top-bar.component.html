@@ -1,0 +1,37 @@
+<a [routerLink]="['/']">
+  <h1>My Store</h1>
+</a>
+
+<div>
+  <ng-container *ngIf="!isLoggedIn">
+    <!-- Show Login button when isLoggedIn is false -->
+    <a routerLink="/login" class="button fancy-button">
+      <span class="material-symbols-outlined"> passkey </span>Login
+    </a>
+  </ng-container>
+
+  <ng-container *ngIf="isLoggedIn">
+    <!-- Show Logout button when isLoggedIn is true -->
+    <button class="button fancy-button" (click)="logout()">
+      <span class="material-symbols-outlined"> logout </span>Logout
+    </button>
+  </ng-container>
+  <span class="spacer"></span>
+
+  <!-- Use ngIf and ngClass to conditionally render the Cart link with grey color -->
+  <ng-container *ngIf="isLoggedIn; else disabledLink">
+    <a
+      routerLink="/cart"
+      class="button fancy-button"
+      [ngClass]="{ 'disabled-link': !isLoggedIn }"
+    >
+      <em class="material-icons">shopping_cart</em>Cart
+    </a>
+  </ng-container>
+
+  <ng-template #disabledLink>
+    <span class="button fancy-button disabled-link">
+      <em class="material-icons">shopping_cart</em>Cart
+    </span>
+  </ng-template>
+</div>

@@ -1,0 +1,9 @@
+.spacer {
+  margin-left: 10px; /* Adjust the value as needed for the desired space */
+}
+
+.disabled-link {
+  color: red; /* Change this to your desired grey color */
+  cursor: not-allowed;
+  /* Add any additional styles for the disabled state */
+}
